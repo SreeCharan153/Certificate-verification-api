@@ -6,7 +6,10 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+    "https://pillionpal.vercel.app",
+    "http://localhost:3000"
+],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -37,3 +40,4 @@ def verify_certificate(id: int = Query(...), db: sqlite3.Connection = Depends(ge
         }
     else:
         raise HTTPException(status_code=404, detail="Certificate not found")
+
